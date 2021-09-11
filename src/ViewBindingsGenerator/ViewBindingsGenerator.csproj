@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>P41.ViewBindingsGenerator</RootNamespace>
+    <AssemblyName>$(RootNamespace)</AssemblyName>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeBuildOutput>false</IncludeBuildOutput> <!-- Do not include the generator as a lib dependency -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Package the generator in the analyzer directory of the nuget package -->
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.11.0" PrivateAssets="All" />
+    <TfmSpecificPackageFile Include="GenerateBindingsAttribute.cs" PackagePath="contentFiles\cs\netstandard2.0\" BuildAction="Compile" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--<Compile Remove="GenerateBindingsAttribute.cs" />-->
+  </ItemGroup>
+
+</Project>
