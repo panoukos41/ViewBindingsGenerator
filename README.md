@@ -8,7 +8,12 @@ A project that generates a partial class (view) for Activities/Fragments that wi
 
 ## Getting Started
 
-To get started make your activity or fragment partial and add the `[GenerateBindings("view_file.xml")]`
+Add the following property to your `csproj` inside an `ItemGroup`
+```csharp
+<AdditionalFiles Include="Resources\layout\*.xml" OutputType="Analyzer" />
+```
+
+Then make your activity or fragment partial and add the `[GenerateBindings("view_file.xml")]` attribute.
 
 ### Activity
 
