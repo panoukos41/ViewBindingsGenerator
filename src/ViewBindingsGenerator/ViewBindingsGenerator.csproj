@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.11.0" PrivateAssets="All" />
-    <TfmSpecificPackageFile Include="GenerateBindingsAttribute.cs" PackagePath="contentFiles\cs\netstandard2.0\" BuildAction="Compile" />
+    <TfmSpecificPackageFile Include="GenerateBindingsAttribute.cs" PackagePath="contentFiles\cs\netstandard2.0\" BuildAction="Compile" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
