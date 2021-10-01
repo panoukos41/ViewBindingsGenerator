@@ -24,8 +24,6 @@ internal static class Extensions
 
     public static string GetNamespace(this INamedTypeSymbol symbol)
     {
-        //return symbol.ContainingNamespace.Name;
-
         return string.Join(".", symbol.ContainingNamespace.ConstituentNamespaces);
     }
 
