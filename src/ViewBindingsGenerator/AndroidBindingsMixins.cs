@@ -59,9 +59,9 @@ namespace {@namespace}
             : "this.FindViewById<T>(id)";
 
         return sb.Append(@$"
-        private readonly Dictionary<int, Android.Views.View> _generatedBindingsCache = new Dictionary<int, Android.Views.View>();
+        private readonly Dictionary<int, global::Android.Views.View> _generatedBindingsCache = new Dictionary<int, global::Android.Views.View>();
 
-        private T GetGeneratedBinding<T>(int id) where T : Android.Views.View
+        private T GetGeneratedBinding<T>(int id) where T : global::Android.Views.View
         {{
             if (_generatedBindingsCache.ContainsKey(id)) 
             {{
