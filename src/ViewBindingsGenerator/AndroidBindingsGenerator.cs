@@ -103,7 +103,7 @@ internal class AndroidBindingsGenerator : ISourceGenerator
         return SymbolType.None;
     }
 
-    const string defaultType = "Android.Widget.";
+    const string defaultType = "global::Android.Widget.";
     const string xmlNamespace = "http://schemas.android.com/apk/res/android";
     const string xmlLocalName = "id";
     static readonly XName androidId = XName.Get(xmlLocalName, xmlNamespace);
@@ -134,7 +134,7 @@ internal class AndroidBindingsGenerator : ISourceGenerator
                     var mapping = mappings[type.Substring(0, lastFullstop)];
                     var control = type.Substring(lastFullstop);
 
-                    type = mapping + control;
+                    type = "global::" + mapping + control;
                 }
 
                 // substring removes the '@+id/' part of the value.
