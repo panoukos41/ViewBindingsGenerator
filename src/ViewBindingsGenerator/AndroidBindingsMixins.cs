@@ -30,15 +30,14 @@ namespace {@namespace}
 {{
     public partial class {@class}
     {{")
-        .RenderProperties(properties)
-        .RenderDictionary(isFragment)
+        .RenderProperties(properties, isFragment)
         .AppendLine(@$"
     }}
 }}");
         return sb;
     }
 
-    private static StringBuilder RenderProperties(this StringBuilder sb, (string type, string id)[] properties)
+    private static StringBuilder RenderProperties(this StringBuilder sb, (string type, string id)[] properties, bool isFragment)
     {
         var count = properties.Length;
         for (int i = 0; i < count; i++)
@@ -46,32 +45,13 @@ namespace {@namespace}
             var (type, id) = properties[i];
 
             var name = id; // todo: Implement naming convention.
-            sb.AppendLine($@"
-        public {type} {name} => GetGeneratedBinding<{type}>(Resource.Id.{id});");
+            sb.AppendLine(isFragment 
+                ?$@"
+        public {type} {name} => View.FindViewById<{type}>(Resource.Id.{id});"
+                :$@"
+        public {type} {name} => this.FindViewById<{type}>(Resource.Id.{id});");
         }
         return sb;
-    }
-
-    private static StringBuilder RenderDictionary(this StringBuilder sb, bool isFragment)
-    {
-        var find = isFragment
-            ? "View.FindViewById<T>(id)"
-            : "this.FindViewById<T>(id)";
-
-        return sb.Append(@$"
-        private readonly Dictionary<int, global::Android.Views.View> _generatedBindingsCache = new Dictionary<int, global::Android.Views.View>();
-
-        private T GetGeneratedBinding<T>(int id) where T : global::Android.Views.View
-        {{
-            if (_generatedBindingsCache.ContainsKey(id)) 
-            {{
-                return (T)_generatedBindingsCache[id];
-            }}
-
-            var view = {find};
-            _generatedBindingsCache[id] = view;
-            return view;
-        }}");
     }
 
     /// <summary>
