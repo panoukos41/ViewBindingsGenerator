@@ -6,20 +6,18 @@
     <AssemblyName>$(RootNamespace)</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeBuildOutput>false</IncludeBuildOutput> <!-- Do not include the generator as a lib dependency -->
+    <NoWarn>NU5128;</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)\Attributes.cs" />
+
     <!-- Package the generator in the analyzer directory of the nuget package -->
     <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.11.0" PrivateAssets="All" />
-    <TfmSpecificPackageFile Include="GenerateBindingsAttribute.cs" PackagePath="contentFiles\cs\netstandard2.0\" BuildAction="Compile" Visible="false" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <!--<Compile Remove="GenerateBindingsAttribute.cs" />-->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.0.1" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
