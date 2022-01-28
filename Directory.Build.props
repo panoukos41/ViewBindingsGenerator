@@ -4,9 +4,6 @@
     <Nullable>enable</Nullable>
     <Configuration Condition="$(Configuration) == ''">Debug</Configuration>
     <NoWarn>IDE0130;</NoWarn>
-
-    <!-- Temp settings -->
-    <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <ImplicitUsings>false</ImplicitUsings>
 
     <!-- Set output paths -->
@@ -16,7 +13,7 @@
 
     <OutputPath>$(Artifacts)\bin</OutputPath>
     <BaseOutputPath>$(Artifacts)\obj</BaseOutputPath>
-    <PackageOutputPath>$(ArtifactsDir)\nuget\</PackageOutputPath>
+    <PackageOutputPath>$(SourceDir)nuget</PackageOutputPath>
     <DocumentationFile>$(ArtifactsDir)\$(MSBuildProjectName)\doc.xml</DocumentationFile>
     <BaseIntermediateOutputPath>$(BaseOutputPath)</BaseIntermediateOutputPath>
   </PropertyGroup>
@@ -36,18 +33,22 @@
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
 
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild> <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
-    <PublishRepositoryUrl>true</PublishRepositoryUrl> <!-- Embed source files that are not tracked by the source control manager in the PDB -->
-    <EmbedUntrackedSources>true</EmbedUntrackedSources> <!-- Include PDB in the built .nupkg -->
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <!-- Embed source files that are not tracked by the source control manager in the PDB -->
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <!-- Include PDB in the built .nupkg -->
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="$(SourceDir)\README.md" Pack="true" PackagePath="\"/>
+    <SourceRoot Include="$(MSBuildThisFileDirectory)/"/>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.231" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.255" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
 </Project>
