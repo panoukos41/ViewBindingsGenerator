@@ -52,3 +52,9 @@ Clone the project and open the solution then you just build the whole solution o
 ## Contribute
 
 Contributions are welcome and appreciated, before you create a pull request please open a [GitHub Issue](https://github.com/panoukos41/ViewBindingsGenerator/issues/new) to discuss what needs changing and or fixing if the issue doesn't exist!
+
+## Credits
+
+This library was created by reading some posts from [Andrew Lock](https://github.com/andrewlock) like [this](https://andrewlock.net/series/creating-a-source-generator/) or [this](https://andrewlock.net/creating-a-source-generator-part-1-creating-an-incremental-source-generator/) and by observing how the [jab](https://github.com/pakrym/jab) project was coded.
+
+The posts are great plus there are a lot more to read and jab is a really great library, you should check them out!
