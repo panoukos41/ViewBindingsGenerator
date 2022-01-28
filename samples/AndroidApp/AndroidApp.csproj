@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\src\ViewBindingsGenerator\GenerateBindingsAttribute.cs" CopyToOutputDirectory="PreserveNewest" />
     <ProjectReference Include="..\..\src\ViewBindingsGenerator\ViewBindingsGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 

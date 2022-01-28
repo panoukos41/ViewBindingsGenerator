@@ -5,7 +5,7 @@ using Fragment = AndroidX.Fragment.App.Fragment;
 
 namespace AndroidApp.Fragments;
 
-[GenerateBindings("fragment_main.xml")]
+[AndroidBinding("fragment_main.xml")]
 public partial class MainFragment : Fragment
 {
     public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
